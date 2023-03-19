@@ -1,0 +1,36 @@
+class Impressora:
+    def __init__(self):
+        self.nivel_cartucho = 100
+        self.contador_impressoes = 0
+
+    def imprimir(self, texto):
+        texto = input("Digite o texto que deseja imprimir: ")
+        print("Imprimindo:", texto)
+        self.nivel_cartucho -= 20      
+        
+        if self.nivel_cartucho <= 0:
+            print("A tinta do cartucho acabou!")
+            self.nivel_cartucho = 0
+        self.contador_impressoes += 1
+        
+        if self.contador_impressoes >= 6:
+            print("Por favor, recarregue o cartucho.")
+            self.contador_impressoes = 0
+
+    def mostrar_nivel_cartucho(self):
+        print("Nível do cartucho:", self.nivel_cartucho)
+
+    def recarregar_cartucho(self):
+        print('Recarregado....')
+        self.nivel_cartucho = 100
+        self.contador_impressoes = 0
+        
+                  
+minha_impressora = Impressora()
+
+for i in range(5):
+    minha_impressora.imprimir(i+1)
+    minha_impressora.mostrar_nivel_cartucho()
+
+minha_impressora.recarregar_cartucho()
+minha_impressora.mostrar_nivel_cartucho()
